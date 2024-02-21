@@ -1,3 +1,12 @@
+/* put rating in object coz they related.
+   image is called a property.
+   js has problem calculating with decimal nums, so its
+   considered best practice to use cents instead. 
+   1dollar = 100 cents
+   all products have same structure so that code can handle
+   each product the same.
+   this is called a data structure
+ */
 const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
