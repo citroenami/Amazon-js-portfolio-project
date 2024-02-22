@@ -667,3 +667,45 @@ export const products = [
     ]
   }
 ];
+
+/* things to check here with Jasmine:
+- function got any argument at invoke?
+- was the argument a product?
+- did the function return anything?
+*/
+
+/* by choice of name it should be obvious that we search
+for a product in products var */
+export function findMatchingProduct(productOfInterest) {
+  //undefined at first
+  let ProductFromProducts;
+  products.forEach((product)=>{
+    //look for product in products
+    if(productOfInterest.id === product.id) {
+    //when found put into ProductFromProducts var
+    ProductFromProducts = product;
+    // ProductFromProducts become defined
+    //AGAIN WRONG PLACE TO RETURN!!!
+    //return ProductFromProducts;
+    }
+  });
+  // RETURN HERE!!! ->
+  return ProductFromProducts;
+}
+
+export function findMatchingProductById(productId) {
+  let matchingProduct;
+  products.forEach((product)=>{
+    //look for product by id
+    if(productId === product.id) {
+    //when found put into ProductFromProducts var
+    matchingProduct = product;
+    /*
+    return matchingProduct;
+    remember not to return here but one levelhigher
+    */
+    }
+  });
+  //return here not inside foreach
+  return matchingProduct;
+}

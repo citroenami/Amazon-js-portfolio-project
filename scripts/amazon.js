@@ -4,8 +4,11 @@
 2. Generate the HTML
 3. Make it interactive */
 /* ../ -> step outside current file (towards parrent folder) */
-import {products} from '../data/products.js';
+import {products,findMatchingProductById} from '../data/products.js';
+import {addProductToCart} from '../data/cart.js';
+import {test} from '../test.js';
 
+test();
 let productsHTML = '';
 
 products.forEach((product) => {
@@ -37,7 +40,9 @@ products.forEach((product) => {
       </div>
 
       <div class="product-quantity-container">
-        <select>
+        <select
+        class="js-product-quantity-select"
+        data-product-id="${product.id}">
           <option selected value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -58,11 +63,50 @@ products.forEach((product) => {
         Added
       </div>
 
-      <button class="add-to-cart-button button-primary">
+      <button class="
+      add-to-cart-button js-add-to-cart-btn
+      button-primary"
+      data-product-id="${product.id}"
+      >
         Add to Cart
       </button>
     </div>
   `;
 });
 document.querySelector('.js-products-grid')
-  .innerHTML = html;
+  .innerHTML = productsHTML;
+
+  /* a Data Attribute is just another HTML attribute.
+  it allows us to attach any info to an element
+  data attributes have to start with data- 
+  btn.dataset -> gives all the data attributes attached 
+  to a certain element(in this case to this button)*/ 
+const addToCartBtnsElement = document.querySelectorAll('.js-add-to-cart-btn');
+  addToCartBtnsElement.forEach((btn)=>{
+    btn.addEventListener('click',()=>{
+      const {productId} = btn.dataset;
+      //look for number to add, to existing/ new quantity
+
+      // variable mismatch select
+      // loop variable name also select lead to unexpected behavior
+      let selectVar;
+      document.querySelectorAll('.js-product-quantity-select')
+        .forEach((select)=>{
+          const selectId = select.dataset.productId;
+          if (selectId === productId) {
+            // this value is string here
+            selectVar = select.value;
+            //console.log(typeof select);
+          }
+        });
+        // console.log(selectVar); found out here that variable mismatch break code
+      // findMatchingProductById returns a product
+      addProductToCart(findMatchingProductById(productId),Number(selectVar));
+      /**
+     * steps:
+     * 1. Check if the product is alredy in the cart
+     * 2. if it is in the cart, increase the quantity
+     * 3. if it's not in the cart, add it to the cart.
+     */
+    });
+});
