@@ -2,13 +2,32 @@
   ect...
   in this project by default this data is in the html code)
 2. Generate the HTML
-3. Make it interactive */
+3. Make it interactive 
+
+ * break down each module into steps 
+ * 1.Check if the product is alredy in the cart
+ * 2. if it is in the cart, increase the quantity
+ * 3. if it's not in the cart, add it to the cart.
+ 
+*/
 /* ../ -> step outside current file (towards parrent folder) */
 import {products,findMatchingProductById} from '../data/products.js';
 import {addProductToCart} from '../data/cart.js';
-import {test} from '../test.js';
+// i specifically need to import calculateCartQuantity
+// into amazonHeader.js its not enough to just import it here
+import {renderAmazonHeader} from './amazonHeader.js';
+/**
+ * The ./ indicates that the module or file you are trying 
+ * to import is located in the same directory as the file
+ * where the import statement is written.
+ */
+//import {test} from '../test.js';
 
-test();
+
+renderAmazonHeader();
+//test();
+// we need to initialize this var with emplty sting 
+// like this productsHTML = '' or list will start with undefined
 let productsHTML = '';
 
 products.forEach((product) => {
@@ -102,6 +121,7 @@ const addToCartBtnsElement = document.querySelectorAll('.js-add-to-cart-btn');
         // console.log(selectVar); found out here that variable mismatch break code
       // findMatchingProductById returns a product
       addProductToCart(findMatchingProductById(productId),Number(selectVar));
+      renderAmazonHeader();
       /**
      * steps:
      * 1. Check if the product is alredy in the cart

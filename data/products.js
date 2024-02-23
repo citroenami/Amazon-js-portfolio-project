@@ -702,7 +702,7 @@ export function findMatchingProductById(productId) {
     matchingProduct = product;
     /*
     return matchingProduct;
-    remember not to return here but one levelhigher
+    remember not to return here but one level higher
     */
     }
   });

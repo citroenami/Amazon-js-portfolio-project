@@ -1,19 +1,25 @@
 /**
  * important things about my code to keep in mind
- * break down each module into steps 
- * 1.Check if the product is alredy in the cart
- * 2. if it is in the cart, increase the quantity
- * 3. if it's not in the cart, add it to the cart.
+ * loop variable f.e: foreach cant have same name 
+ * as variable outside loop.
+ * scope matters -> pay attention not to return from function 
+ * inside foreach loop but from outside of it
+ * if you cant come up with good var names ask chatgpt
  */
 
 let bol = false;
 export function test(){
   let testVar = someTest();
+  // if function dont return anything testVar 
+  // will be initialized with undefined value
+  console.log(typeof testVar);
   if(testVar) {
     /*want to see if there is difference between
     initializing a variable with undefined 
     and getting undefined from non returning function*/
     console.log('useful info about func working');
+  } else {
+    console.log('function didnt return anything');
   }
 }
 
