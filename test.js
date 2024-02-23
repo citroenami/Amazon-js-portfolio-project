@@ -1,10 +1,24 @@
 /**
  * important things about my code to keep in mind
- * loop variable f.e: foreach cant have same name 
+ * loop variable e.g: foreach cant have same name 
  * as variable outside loop.
  * scope matters -> pay attention not to return from function 
  * inside foreach loop but from outside of it
  * if you cant come up with good var names ask chatgpt
+ * --------------
+ * in task quantity selector my code was:
+ * <select
+        class="js-product-quantity-select"
+        data-product-id="${product.id}">
+   this could be improved to:
+   <select
+        class="js-quantity-selector-${product.id}"
+        >
+   because its obvious that its about product quantity
+   also using dataset here is redundant 
+   note: values we get from the DOM are strings by default
+   e.g: the value of <select> element
+   ---------------
  */
 
 let bol = false;

@@ -8,7 +8,10 @@ export let cart = [{
   quantity: 1
 }];
 
-export function addProductToCart (productOfInterest,extraQuantity) {
+
+// change name: extraQuantity -> quantity so that we can use 
+// shorthand property
+export function addProductToCart (productOfInterest,quantity) {
   // oldProduct contains product from products 
   let oldProduct = isProductInCart(productOfInterest);
   let newProduct = findMatchingProduct(productOfInterest);
@@ -17,11 +20,11 @@ export function addProductToCart (productOfInterest,extraQuantity) {
   // meaning that if function doesnt return anything variable gonna
   // be initialized with undefined 
   if(oldProduct) {
-    oldProduct.quantity += extraQuantity;
+    oldProduct.quantity += quantity;
   } else {
     cart.push({
       productId: newProduct.id,
-      quantity: extraQuantity
+      quantity
     });
   }
   /**

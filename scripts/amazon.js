@@ -57,11 +57,10 @@ products.forEach((product) => {
       <div class="product-price">
         $${(product.priceCents / 100).toFixed(2)}
       </div>
-
+      
       <div class="product-quantity-container">
         <select
-        class="js-product-quantity-select"
-        data-product-id="${product.id}">
+        class="js-quantity-selector-${product.id}">
           <option selected value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -77,7 +76,8 @@ products.forEach((product) => {
 
       <div class="product-spacer"></div>
 
-      <div class="added-to-cart">
+      <div class="added-to-cart
+      js-added-to-cart-${product.id}">
         <img src="images/icons/checkmark.png">
         Added
       </div>
@@ -102,31 +102,35 @@ document.querySelector('.js-products-grid')
   to a certain element(in this case to this button)*/ 
 const addToCartBtnsElement = document.querySelectorAll('.js-add-to-cart-btn');
   addToCartBtnsElement.forEach((btn)=>{
+    // this var is unique for each btn it uses closure
+    let previousTimeoutKey;
     btn.addEventListener('click',()=>{
       const {productId} = btn.dataset;
       //look for number to add, to existing/ new quantity
 
-      // variable mismatch select
-      // loop variable name also select lead to unexpected behavior
-      let selectVar;
-      document.querySelectorAll('.js-product-quantity-select')
-        .forEach((select)=>{
-          const selectId = select.dataset.productId;
-          if (selectId === productId) {
-            // this value is string here
-            selectVar = select.value;
-            //console.log(typeof select);
-          }
-        });
-        // console.log(selectVar); found out here that variable mismatch break code
+      // this value is string here  
+      let selectVar = document.querySelector(`.js-quantity-selector-${productId}`)
+      .value;
+      
+      // console.log(selectVar); found out here that variable mismatch break code
       // findMatchingProductById returns a product
       addProductToCart(findMatchingProductById(productId),Number(selectVar));
       renderAmazonHeader();
+      // this element is also unique for each instance
+      // so we can use it to remove class from msg div element
+      const addedMsgElement = document.querySelector(`.js-added-to-cart-${productId}`);
+      addedMsgElement.classList.add('added-to-cart-visible');
+      if(previousTimeoutKey) {
+        clearTimeout(previousTimeoutKey);
+      }
+      previousTimeoutKey = setTimeout(()=>{
+        addedMsgElement.classList.remove('added-to-cart-visible');
+      },2000);
+    });
       /**
      * steps:
      * 1. Check if the product is alredy in the cart
      * 2. if it is in the cart, increase the quantity
      * 3. if it's not in the cart, add it to the cart.
      */
-    });
 });
