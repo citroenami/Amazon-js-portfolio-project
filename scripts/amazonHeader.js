@@ -1,5 +1,14 @@
 import {calculateCartQuantity} from '../data/cart.js';
-
+/**
+ * href="checkout.html" 
+ * import {...} from './';
+ * both JavaScript imports and HTML resource references 
+ * are handled by the browser, but they may use slightly 
+ * different rules for path resolution. 
+ * The "./" in JavaScript imports is specific to 
+ * the ECMAScript module system and is not a general 
+ * requirement for all types of resource references in HTML.
+ */
 export function renderAmazonHeader () {
   let headerHTML = '';
 

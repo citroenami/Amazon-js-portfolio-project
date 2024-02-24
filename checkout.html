@@ -19,180 +19,14 @@
     <link rel="stylesheet" href="styles/pages/checkout/checkout.css">
   </head>
   <body>
-    <div class="checkout-header">
-      <div class="header-content">
-        <div class="checkout-header-left-section">
-          <a href="amazon.html">
-            <img class="amazon-logo" src="images/amazon-logo.png">
-            <img class="amazon-mobile-logo" src="images/amazon-mobile-logo.png">
-          </a>
-        </div>
-
-        <div class="checkout-header-middle-section">
-          Checkout (<a class="return-to-home-link"
-            href="amazon.html">3 items</a>)
-        </div>
-
-        <div class="checkout-header-right-section">
-          <img src="images/icons/checkout-lock-icon.png">
-        </div>
-      </div>
+    <div class="checkout-header js-checkout-header">
     </div>
 
     <div class="main">
       <div class="page-title">Review your order</div>
 
       <div class="checkout-grid">
-        <div class="order-summary">
-          <div class="cart-item-container">
-            <div class="delivery-date">
-              Delivery date: Tuesday, June 21
-            </div>
-
-            <div class="cart-item-details-grid">
-              <img class="product-image"
-                src="images/products/athletic-cotton-socks-6-pairs.jpg">
-
-              <div class="cart-item-details">
-                <div class="product-name">
-                  Black and Gray Athletic Cotton Socks - 6 Pairs
-                </div>
-                <div class="product-price">
-                  $10.90
-                </div>
-                <div class="product-quantity">
-                  <span>
-                    Quantity: <span class="quantity-label">2</span>
-                  </span>
-                  <span class="update-quantity-link link-primary">
-                    Update
-                  </span>
-                  <span class="delete-quantity-link link-primary">
-                    Delete
-                  </span>
-                </div>
-              </div>
-
-              <div class="delivery-options">
-                <div class="delivery-options-title">
-                  Choose a delivery option:
-                </div>
-                <div class="delivery-option">
-                  <input type="radio" checked
-                    class="delivery-option-input"
-                    name="delivery-option-1">
-                  <div>
-                    <div class="delivery-option-date">
-                      Tuesday, June 21
-                    </div>
-                    <div class="delivery-option-price">
-                      FREE Shipping
-                    </div>
-                  </div>
-                </div>
-                <div class="delivery-option">
-                  <input type="radio"
-                    class="delivery-option-input"
-                    name="delivery-option-1">
-                  <div>
-                    <div class="delivery-option-date">
-                      Wednesday, June 15
-                    </div>
-                    <div class="delivery-option-price">
-                      $4.99 - Shipping
-                    </div>
-                  </div>
-                </div>
-                <div class="delivery-option">
-                  <input type="radio"
-                    class="delivery-option-input"
-                    name="delivery-option-1">
-                  <div>
-                    <div class="delivery-option-date">
-                      Monday, June 13
-                    </div>
-                    <div class="delivery-option-price">
-                      $9.99 - Shipping
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="cart-item-container">
-            <div class="delivery-date">
-              Delivery date: Wednesday, June 15
-            </div>
-
-            <div class="cart-item-details-grid">
-              <img class="product-image"
-                src="images/products/intermediate-composite-basketball.jpg">
-
-              <div class="cart-item-details">
-                <div class="product-name">
-                  Intermediate Size Basketball
-                </div>
-                <div class="product-price">
-                  $20.95
-                </div>
-                <div class="product-quantity">
-                  <span>
-                    Quantity: <span class="quantity-label">1</span>
-                  </span>
-                  <span class="update-quantity-link link-primary">
-                    Update
-                  </span>
-                  <span class="delete-quantity-link link-primary">
-                    Delete
-                  </span>
-                </div>
-              </div>
-
-              <div class="delivery-options">
-                <div class="delivery-options-title">
-                  Choose a delivery option:
-                </div>
-
-                <div class="delivery-option">
-                  <input type="radio" class="delivery-option-input"
-                    name="delivery-option-2">
-                  <div>
-                    <div class="delivery-option-date">
-                      Tuesday, June 21
-                    </div>
-                    <div class="delivery-option-price">
-                      FREE Shipping
-                    </div>
-                  </div>
-                </div>
-                <div class="delivery-option">
-                  <input type="radio" checked class="delivery-option-input"
-                    name="delivery-option-2">
-                  <div>
-                    <div class="delivery-option-date">
-                      Wednesday, June 15
-                    </div>
-                    <div class="delivery-option-price">
-                      $4.99 - Shipping
-                    </div>
-                  </div>
-                </div>
-                <div class="delivery-option">
-                  <input type="radio" class="delivery-option-input"
-                    name="delivery-option-2">
-                  <div>
-                    <div class="delivery-option-date">
-                      Monday, June 13
-                    </div>
-                    <div class="delivery-option-price">
-                      $9.99 - Shipping
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="order-summary js-order-summary">
         </div>
 
         <div class="payment-summary">
@@ -231,5 +65,18 @@
         </div>
       </div>
     </div>
+    <!-- The difference between src="scripts/checkout.js" and src="/scripts/checkout.js" lies in the interpretation 
+      of the path. src="scripts/checkout.js": This is a relative path. It tells the browser to look 
+      for the "checkout.js" file in a subdirectory called "scripts" within the current directory. 
+      If your HTML file is in the root directory, this path indicates that the "scripts" directory is a subdirectory
+      of the current location. src="/scripts/checkout.js": This is an absolute path. It tells the browser 
+      to look for the "checkout.js" file in the root directory directly within a subdirectory called "scripts". 
+      !!! The leading "/" signifies the root directory. !!!
+      Which one you use depends on your project structure and how you want to organize your files:
+      If your HTML file is in the root directory and the "scripts" folder is also in the root directory, 
+      you can use src="scripts/checkout.js" because it's a relative path from the current location.
+      If your "scripts" folder is in the root directory, but your HTML file is in a subdirectory, 
+      you might want to use src="/scripts/checkout.js" to provide an absolute path from the root.-->
+    <script type="module" src="scripts/checkout/checkout.js"></script>
   </body>
 </html>
