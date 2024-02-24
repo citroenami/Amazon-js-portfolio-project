@@ -2,6 +2,8 @@ import { cart } from "../../data/cart.js";
 import {findMatchingProductById} from '../../data/products.js';
 import {formatCurrency} from '../utils/money.js';
 
+// radio selector working same name = we can only select 1 of them
+// <input type='radio' name="name1">
 export function renderOrderSummary () {
   let orderSummaryHTML = '';
 
@@ -45,7 +47,7 @@ export function renderOrderSummary () {
               <div class="delivery-option">
                 <input type="radio" checked
                   class="delivery-option-input"
-                  name="delivery-option-1">
+                  name="delivery-option-${matchingProduct.id}">
                 <div>
                   <div class="delivery-option-date">
                     Tuesday, June 21
@@ -58,7 +60,7 @@ export function renderOrderSummary () {
               <div class="delivery-option">
                 <input type="radio"
                   class="delivery-option-input"
-                  name="delivery-option-1">
+                  name="delivery-option-${matchingProduct.id}">
                 <div>
                   <div class="delivery-option-date">
                     Wednesday, June 15
@@ -71,7 +73,7 @@ export function renderOrderSummary () {
               <div class="delivery-option">
                 <input type="radio"
                   class="delivery-option-input"
-                  name="delivery-option-1">
+                  name="delivery-option-${matchingProduct.id}">
                 <div>
                   <div class="delivery-option-date">
                     Monday, June 13
