@@ -11,7 +11,9 @@ export let cart = [{
 
 // change name: extraQuantity -> quantity so that we can use 
 // shorthand property
-export function addProductToCart (productOfInterest,quantity) {
+// change name: addProductToCart -> addToCart (its not automatic
+// that we add product to it, so dont add the word product)
+export function addToCart (productOfInterest,quantity) {
   // oldProduct contains product from products 
   let oldProduct = isProductInCart(productOfInterest);
   let newProduct = findMatchingProduct(productOfInterest);

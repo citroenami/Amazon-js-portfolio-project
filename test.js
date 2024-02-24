@@ -1,10 +1,20 @@
 /**
- * important things about my code to keep in mind
+ * important things about my code to keep in mind:
+ * feedback: i comment randomly time to time here and there
+ * and include them into the different git commits without
+ * mentioning anything. 
  * loop variable e.g: foreach cant have same name 
  * as variable outside loop.
  * scope matters -> pay attention not to return from function 
  * inside foreach loop but from outside of it
  * if you cant come up with good var names ask chatgpt
+ * --------------
+ * using multiple script tags instead of modules
+ * can cause naming conflicts
+ * e.g: var cart in cart.js and cart variable in amazon.js
+ * is OK if we use modules because we CONTAIN the variables
+ * inside the different files
+ * for modules to work we need to use live server
  * --------------
  * in task quantity selector my code was:
  * <select

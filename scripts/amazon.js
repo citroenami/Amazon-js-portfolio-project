@@ -12,7 +12,7 @@
 */
 /* ../ -> step outside current file (towards parrent folder) */
 import {products,findMatchingProductById} from '../data/products.js';
-import {addProductToCart} from '../data/cart.js';
+import {addToCart} from '../data/cart.js';
 // i specifically need to import calculateCartQuantity
 // into amazonHeader.js its not enough to just import it here
 import {renderAmazonHeader} from './amazonHeader.js';
@@ -114,7 +114,7 @@ const addToCartBtnsElement = document.querySelectorAll('.js-add-to-cart-btn');
       
       // console.log(selectVar); found out here that variable mismatch break code
       // findMatchingProductById returns a product
-      addProductToCart(findMatchingProductById(productId),Number(selectVar));
+      addToCart(findMatchingProductById(productId),Number(selectVar));
       renderAmazonHeader();
       // this element is also unique for each instance
       // so we can use it to remove class from msg div element
