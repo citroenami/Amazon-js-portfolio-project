@@ -6,6 +6,7 @@ import {formatCurrency} from '../utils/money.js';
 // <input type='radio' name="name1">
 export function renderOrderSummary () {
   let orderSummaryHTML = '';
+  console.log(cart);
 
   cart.forEach((cartItem)=>{
     const productId = cartItem.productId;
@@ -98,6 +99,8 @@ export function renderOrderSummary () {
   /**
    * 1. Remove the product from the cart
    * 2. Update the HTML
+   * we could use container.remove() by inserting the id into 
+   * the container class name but its not what we want here
    */
   document.querySelectorAll('.js-delete-link')
     .forEach((delLink)=>{

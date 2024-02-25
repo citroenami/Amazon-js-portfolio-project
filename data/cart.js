@@ -1,13 +1,27 @@
 import {findMatchingProduct} from './products.js';
 
-export let cart = [{
-  productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
-  quantity: 2
-},{
-  productId: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
-  quantity: 1
-}];
+// localStorage.getItem('cart') will return null if no cart
+// even if storage stores empty array its gonna be truthy value
+export let cart = JSON.parse(localStorage.getItem('cart')) || [{
+    productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
+    quantity: 2
+  },{
+    productId: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
+    quantity: 1
+  }];
 
+
+
+function saveToStorage() {
+  /**
+   * localStorage.setItem takes 2 strings
+   * 1 name of what we wanna save
+   * 2 data that we wanna save
+   * localStorage can only save strings so we need to convert
+   * our array into string
+   */
+  localStorage.setItem('cart',JSON.stringify(cart));
+}
 
 // change name: extraQuantity -> quantity so that we can use 
 // shorthand property
@@ -28,6 +42,7 @@ export function addToCart (productOfInterest,quantity) {
       productId: newProduct.id,
       quantity
     });
+
   }
   /**
    * when you log the object after adding something 
@@ -35,8 +50,9 @@ export function addToCart (productOfInterest,quantity) {
    * the earlier logs also reflect the changes. 
    * The console.log statements are printing references
    * to the same object, not different instances.
+   * console.log(cart);
    */
-  console.log(cart);
+  saveToStorage();
 }
 //in Jasmine or in try catch statement
 // need to check if cart is empty
@@ -92,5 +108,12 @@ export function removeFromCart(productId) {
       newCart.push(cartItem);
     }
   });
-  cart = newCart;
+  
+  if(newCart.length !== 0) {
+    cart = newCart;
+    saveToStorage();
+  } else {
+    cart = newCart;
+    localStorage.removeItem('cart');
+  }
 }
