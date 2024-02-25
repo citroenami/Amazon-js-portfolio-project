@@ -1,4 +1,4 @@
-import { cart } from "../../data/cart.js";
+import { cart,removeFromCart } from "../../data/cart.js";
 import {findMatchingProductById} from '../../data/products.js';
 import {formatCurrency} from '../utils/money.js';
 
@@ -34,7 +34,10 @@ export function renderOrderSummary () {
                 <span class="update-quantity-link link-primary">
                   Update
                 </span>
-                <span class="delete-quantity-link link-primary">
+                <span class="delete-quantity-link 
+                js-delete-link
+                link-primary"
+                data-product-id="${matchingProduct.id}">
                   Delete
                 </span>
               </div>
@@ -91,4 +94,17 @@ export function renderOrderSummary () {
 
   document.querySelector('.js-order-summary')
     .innerHTML = orderSummaryHTML;
+
+  /**
+   * 1. Remove the product from the cart
+   * 2. Update the HTML
+   */
+  document.querySelectorAll('.js-delete-link')
+    .forEach((delLink)=>{
+      delLink.addEventListener('click',()=>{
+        const {productId} = delLink.dataset;
+        removeFromCart(productId);
+        renderOrderSummary();
+      });
+    });
 }

@@ -76,3 +76,21 @@ export function calculateCartQuantity () {
   });
   return totalCartQuantity;
 }
+
+//dont write removeItemFromCart coz its obvious what we delete
+/**
+ * how te delete an item from cart?
+ * Steps:
+ * 1. Create a new array
+ * 2. Loop through the cart
+ * 3. Add each product to the new array, exept for this productId
+ */
+export function removeFromCart(productId) {
+  let newCart = [];
+  cart.forEach((cartItem)=>{
+    if(cartItem.productId !== productId) {
+      newCart.push(cartItem);
+    }
+  });
+  cart = newCart;
+}
