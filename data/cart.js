@@ -111,9 +111,8 @@ export function removeFromCart(productId) {
   
   if(newCart.length !== 0) {
     cart = newCart;
-    saveToStorage();
   } else {
     cart = newCart;
-    localStorage.removeItem('cart');
   }
+  saveToStorage();
 }

@@ -38,14 +38,11 @@ export function renderAmazonHeader () {
 
         <a class="cart-link header-link" href="checkout.html">
           <img class="cart-icon" src="images/icons/cart-icon.png">
-          <div class="cart-quantity js-cart-quantity"></div>
+          <div class="cart-quantity">${calculateCartQuantity()}</div>
           <div class="cart-text">Cart</div>
         </a>
       </div>
   `;
   document.querySelector('.js-amazon-header')
     .innerHTML = headerHTML;
-
-  document.querySelector('.js-cart-quantity')
-    .innerHTML = calculateCartQuantity();
 }

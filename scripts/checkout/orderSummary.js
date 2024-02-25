@@ -1,10 +1,12 @@
 import { cart,removeFromCart } from "../../data/cart.js";
 import {findMatchingProductById} from '../../data/products.js';
 import {formatCurrency} from '../utils/money.js';
+import {renderCheckoutHeader} from './checkoutHeader.js';
 
 // radio selector working same name = we can only select 1 of them
 // <input type='radio' name="name1">
 export function renderOrderSummary () {
+  renderCheckoutHeader();
   let orderSummaryHTML = '';
   console.log(cart);
 
@@ -12,7 +14,8 @@ export function renderOrderSummary () {
     const productId = cartItem.productId;
     const matchingProduct = findMatchingProductById(productId);
     orderSummaryHTML += `
-        <div class="cart-item-container">
+        <div class="cart-item-container
+        js-cart-item-container-${matchingProduct.id}">
           <div class="delivery-date">
             Delivery date: Tuesday, June 21
           </div>
@@ -32,8 +35,17 @@ export function renderOrderSummary () {
                 <span>
                   Quantity: <span class="quantity-label">${cartItem.quantity}</span>
                 </span>
-                <span class="update-quantity-link link-primary">
+                <span class="update-quantity-link
+                js-update-quantity-link
+                link-primary"
+                data-product-id="${matchingProduct.id}">
                   Update
+                </span>
+                <input class="quantity-input">
+                <span class="save-quantity-link
+                js-save-quantity-link-${matchingProduct.id}
+                link-primary">
+                  Save
                 </span>
                 <span class="delete-quantity-link 
                 js-delete-link
@@ -110,4 +122,20 @@ export function renderOrderSummary () {
         renderOrderSummary();
       });
     });
+
+  const updateLinkElement = document.querySelectorAll(`.js-update-quantity-link`);
+  updateLinkElement.forEach((updateLinkBtn)=>{
+    updateLinkBtn.addEventListener('click',()=>{
+      const {productId} = updateLinkBtn.dataset;
+      const containerElement = document.querySelector(`.js-cart-item-container-${productId}`);
+      containerElement.classList.add('is-editing-quantity');
+      const saveLinkElement = document.querySelector(`.js-save-quantity-link-${productId}`);
+      saveLinkElement.addEventListener('click',()=>{
+
+        containerElement.classList.remove('is-editing-quantity');
+      });
+    });
+  });
+
+  
 }
