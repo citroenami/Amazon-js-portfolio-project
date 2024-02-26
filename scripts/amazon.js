@@ -93,7 +93,7 @@ products.forEach((product) => {
     </div>
   `;
 });
-document.querySelector('.js-products-grid')
+  document.querySelector('.js-products-grid')
   .innerHTML = productsHTML;
 
   /* a Data Attribute is just another HTML attribute.
@@ -101,7 +101,7 @@ document.querySelector('.js-products-grid')
   data attributes have to start with data- 
   btn.dataset -> gives all the data attributes attached 
   to a certain element(in this case to this button)*/ 
-const addToCartBtnsElement = document.querySelectorAll('.js-add-to-cart-btn');
+  const addToCartBtnsElement = document.querySelectorAll('.js-add-to-cart-btn');
   addToCartBtnsElement.forEach((btn)=>{
     // this var is unique for each btn it uses closure
     let previousTimeoutKey;

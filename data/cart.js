@@ -116,3 +116,12 @@ export function removeFromCart(productId) {
   }
   saveToStorage();
 }
+
+export function updateProductQuantity(productId,newQuantity) {
+  cart.forEach((cartItem)=>{
+    if(cartItem.productId === productId) {
+      cartItem.quantity = newQuantity;
+    }
+  });
+  saveToStorage();
+}

@@ -1,4 +1,4 @@
-import { cart,removeFromCart } from "../../data/cart.js";
+import { cart,removeFromCart,updateProductQuantity } from "../../data/cart.js";
 import {findMatchingProductById} from '../../data/products.js';
 import {formatCurrency} from '../utils/money.js';
 import {renderCheckoutHeader} from './checkoutHeader.js';
@@ -41,7 +41,7 @@ export function renderOrderSummary () {
                 data-product-id="${matchingProduct.id}">
                   Update
                 </span>
-                <input class="quantity-input">
+                <input class="quantity-input js-quantity-input-${matchingProduct.id}">
                 <span class="save-quantity-link
                 js-save-quantity-link-${matchingProduct.id}
                 link-primary">
@@ -52,6 +52,12 @@ export function renderOrderSummary () {
                 link-primary"
                 data-product-id="${matchingProduct.id}">
                   Delete
+                </span>
+                <br>
+                <span class="invalid-input 
+                js-invalid-input-${matchingProduct.id}
+                ">
+                  invalid input!
                 </span>
               </div>
             </div>
@@ -129,10 +135,45 @@ export function renderOrderSummary () {
       const {productId} = updateLinkBtn.dataset;
       const containerElement = document.querySelector(`.js-cart-item-container-${productId}`);
       containerElement.classList.add('is-editing-quantity');
+// ------------- this part below handles save btn ---------
       const saveLinkElement = document.querySelector(`.js-save-quantity-link-${productId}`);
       saveLinkElement.addEventListener('click',()=>{
-
-        containerElement.classList.remove('is-editing-quantity');
+        const inputElement = document.querySelector(`.js-quantity-input-${productId}`);
+        const inputValue = inputElement.value;
+        const invalidElement = document.querySelector(`.js-invalid-input-${productId}`);
+        if(Number(inputValue) > 0 && Number(inputValue) <= 1000) {
+          updateProductQuantity(productId,Number(inputValue));
+          containerElement.classList.remove('is-editing-quantity');
+          if(invalidElement.classList.contains('not-valid')) {
+            invalidElement.classList.remove('not-valid');
+          }
+          renderOrderSummary();
+        } else {
+          invalidElement.classList.add('not-valid');
+          console.log('ok')
+        }
+      });
+// -----this code is a little repetative but at this moment
+// i know no better ----------------
+      const inputElement = document.querySelector(`.js-quantity-input-${productId}`);
+      inputElement.addEventListener("keydown", (event)=> {
+        // Check if the pressed key is Enter (key code 13)
+        if (event.key === "Enter") {
+          // Your code to execute when Enter is pressed
+          const inputValue = inputElement.value;
+          const invalidElement = document.querySelector(`.js-invalid-input-${productId}`);
+          if(Number(inputValue) > 0 && Number(inputValue) <= 1000) {
+            updateProductQuantity(productId,Number(inputValue));
+            containerElement.classList.remove('is-editing-quantity');
+            if(invalidElement.classList.contains('not-valid')) {
+              invalidElement.classList.remove('not-valid');
+            }
+            renderOrderSummary();
+          } else {
+            invalidElement.classList.add('not-valid');
+            console.log('ok')
+          }
+        }
       });
     });
   });
