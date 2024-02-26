@@ -12,7 +12,7 @@
 */
 /* ../ -> step outside current file (towards parrent folder) */
 import {products,findMatchingProductById} from '../data/products.js';
-import {formatCurrency} from './utils/money.js';
+import formatCurrency from './utils/money.js';
 import {addToCart} from '../data/cart.js';
 // i specifically need to import calculateCartQuantity
 // into amazonHeader.js its not enough to just import it here
@@ -22,7 +22,7 @@ import {renderAmazonHeader} from './amazonHeader.js';
  * to import is located in the same directory as the file
  * where the import statement is written.
  */
-//import {test} from '../test.js';
+import {test} from '../test.js';
 
 
 renderAmazonHeader();

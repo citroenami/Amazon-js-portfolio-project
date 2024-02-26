@@ -29,6 +29,10 @@
    note: values we get from the DOM are strings by default
    e.g: the value of <select> element
    ---------------
+   external library = code outside of our project
+   https://unpkg.com/supersimpledev@1.0.1/hello.js
+   {dayjs} -> this is called a named export
+   dayjs -> this is a default export
  */
 
 let bol = false;

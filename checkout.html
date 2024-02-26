@@ -76,7 +76,19 @@
       If your HTML file is in the root directory and the "scripts" folder is also in the root directory, 
       you can use src="scripts/checkout.js" because it's a relative path from the current location.
       If your "scripts" folder is in the root directory, but your HTML file is in a subdirectory, 
-      you might want to use src="/scripts/checkout.js" to provide an absolute path from the root.-->
-    <script type="module" src="scripts/checkout/checkout.js"></script>
+      you might want to use src="/scripts/checkout.js" to provide an absolute path from the root.
+      <script src="https://unpkg.com/supersimpledev@1.0.1/hello.js"></script>
+      we can load external library using script tag
+      generally we load external libraries first 
+      !!! if we load e.l. like this, it can cause naming conflict so
+      use as module instead!
+      to include e.l. as module we use ESM version !!!
+      After including this script in your HTML, the hello function 
+      become part of the global scope. You can then use these
+      in any other script included in the HTML file, or in the
+      browser's console.-->
+      <!-- external library dayJS 
+      <script src="https://unpkg.com/dayjs@1.11.10/dayjs.min.js"></script> -->
+      <script type="module" src="scripts/checkout/checkout.js"></script>
   </body>
 </html>
