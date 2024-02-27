@@ -1,5 +1,5 @@
 import { cart,removeFromCart,updateProductQuantity,updateDeliveryOption } from "../../data/cart.js";
-import {findMatchingProductById} from '../../data/products.js';
+import {getProduct} from '../../data/products.js';
 import formatCurrency from '../utils/money.js';
 import {renderCheckoutHeader} from './checkoutHeader.js';
 import {deliveryOptions,findDeliveryOption} from '../../data/deliveryOptions.js';
@@ -26,7 +26,8 @@ export function renderOrderSummary () {
 
   cart.forEach((cartItem)=>{
     const productId = cartItem.productId;
-    const matchingProduct = findMatchingProductById(productId);
+    // const matchingProduct = findMatchingProductById(productId);
+    const matchingProduct = getProduct(productId);
     const deliveryOptionId = cartItem.deliveryOptionId;
 
     const deliveryOption = findDeliveryOption(deliveryOptionId);

@@ -33,6 +33,11 @@
    https://unpkg.com/supersimpledev@1.0.1/hello.js
    {dayjs} -> this is called a named export
    dayjs -> this is a default export
+   ------------------
+   function getProduct(productId) ->
+ * if we look for product by id, than we dont need to choose
+   between product.id(productItem) and 
+   product.productId(cartItem) 
  */
 
 let bol = false;

@@ -11,7 +11,7 @@
  
 */
 /* ../ -> step outside current file (towards parrent folder) */
-import {products,findMatchingProductById} from '../data/products.js';
+import {products} from '../data/products.js';
 import formatCurrency from './utils/money.js';
 import {addToCart} from '../data/cart.js';
 // i specifically need to import calculateCartQuantity
@@ -114,8 +114,10 @@ products.forEach((product) => {
       .value;
       
       // console.log(selectVar); found out here that variable mismatch break code
-      // findMatchingProductById returns a product
-      addToCart(findMatchingProductById(productId),Number(selectVar));
+      // findMatchingProductById returns a product 
+      // findMatchingProductById changed to getProduct 
+      // and deemed unnecessary after final evaluation
+      addToCart(productId,Number(selectVar));
       renderAmazonHeader();
       // this element is also unique for each instance
       // so we can use it to remove class from msg div element

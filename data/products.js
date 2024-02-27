@@ -704,6 +704,8 @@ export const products = [
 
 /* by choice of name it should be obvious that we search
 for a product in products var */
+// we can not use cartProduct here
+/** this function is also not necessary !!! 
 export function findMatchingProduct(productOfInterest) {
   //undefined at first
   let ProductFromProducts;
@@ -720,8 +722,28 @@ export function findMatchingProduct(productOfInterest) {
   // RETURN HERE!!! ->
   return ProductFromProducts;
 }
+*/
+/** this function is also unnecessary can use getProduct() instead
+export function findCartProductInProducts(cartItem) {
+  let matchingProduct;
+  products.forEach((product)=>{
+    if(cartItem.productId === product.id) {
+      matchingProduct = product;
+    }
+  });
+  // return productFromProducts
+  return matchingProduct;
+}
+*/
+/**
+ * function getProduct(productId) 
+ * if we look for product by id, 
+ * than we dont need to choose betzeen product.id(productItem) and
+ * product.productId(cartItem) 
+ */
 
-export function findMatchingProductById(productId) {
+// rename  from findMatchingProductById -> getProduct
+export function getProduct(productId) {
   let matchingProduct;
   products.forEach((product)=>{
     //look for product by id

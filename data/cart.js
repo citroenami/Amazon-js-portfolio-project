@@ -1,4 +1,4 @@
-import {findMatchingProduct} from './products.js';
+import {getProduct} from './products.js';
 
 
 // localStorage.getItem('cart') will return null if no cart
@@ -30,7 +30,7 @@ function saveToStorage() {
 // shorthand property
 // change name: addProductToCart -> addToCart (its not automatic
 // that we add product to it, so dont add the word product)
-export function addToCart (productOfInterest,quantity) {
+/** export function addToCart (productOfInterest,quantity) {
   // oldProduct contains product from products 
   let oldProduct = isProductInCart(productOfInterest);
   let newProduct = findMatchingProduct(productOfInterest);
@@ -38,28 +38,36 @@ export function addToCart (productOfInterest,quantity) {
   // in test() we already found out that this should work like this
   // meaning that if function doesnt return anything variable gonna
   // be initialized with undefined 
-  if(oldProduct) {
-    oldProduct.quantity += quantity;
-  } else {
-    cart.push({
-      productId: newProduct.id,
-      quantity,
-      deliveryOptionId: '1'
-    });
-
-  }
-  /**
+ 
    * when you log the object after adding something 
    * and after adding extra, you'll see that 
    * the earlier logs also reflect the changes. 
    * The console.log statements are printing references
    * to the same object, not different instances.
    * console.log(cart);
-   */
+   
+  saveToStorage();
+} */
+
+// quantity is a number here
+export function addToCart(productId,quantity) {
+  const cartProduct = findProductByIdInCart(productId);
+  if(cartProduct) {
+    cartProduct.quantity += quantity;
+  } else {
+    cart.push({
+      productId,
+      quantity,
+      deliveryOptionId: '1'
+    });
+  }
   saveToStorage();
 }
+
 //in Jasmine or in try catch statement
 // need to check if cart is empty
+/** !!! this whole part is not necessary after final evaluation !!!
+ * if a product exists or not is up to Jasmine to find out
 function isProductInCart (productOfInterest) {
   //first find product in products
   let ProductFromProducts = findMatchingProduct(productOfInterest);
@@ -74,13 +82,13 @@ function isProductInCart (productOfInterest) {
       /**
        * IMPORTANT!!!
        * REMEMBER TO USE RETURN STATEMENT ON ONE LVL HIGHER
-       */
+       
       //return cartProduct;
       cartItemVar = cartItem;
     }
   });
   return cartItemVar;
-}
+} */
 
 /**
  * steps
