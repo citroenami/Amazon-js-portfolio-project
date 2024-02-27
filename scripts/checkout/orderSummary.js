@@ -1,4 +1,4 @@
-import { cart,removeFromCart,updateProductQuantity } from "../../data/cart.js";
+import { cart,removeFromCart,updateProductQuantity,updateDeliveryOption } from "../../data/cart.js";
 import {findMatchingProductById} from '../../data/products.js';
 import formatCurrency from '../utils/money.js';
 import {renderCheckoutHeader} from './checkoutHeader.js';
@@ -106,8 +106,17 @@ export function renderOrderSummary () {
       : '';
 
       // ${isChecked ? 'checked' : ''}
+      /**
+       * When you place an <input type="radio"> element inside a <div> 
+       * and attach an event listener to the <div> for click events, 
+       * it creates a connection between the click event on the <div> 
+       * and the associated <input> element. This is because of 
+       * a behavior known as !!! event bubbling !!! in the DOM.
+       */
       optionsHTML += `
-        <div class="delivery-option">
+        <div class="delivery-option js-delivery-option"
+        data-product-id="${matchingProduct.id}"
+        data-delivery-option-id="${deliveryOption.id}">
           <input type="radio" 
             ${isChecked}
             class="delivery-option-input"
@@ -140,6 +149,15 @@ export function renderOrderSummary () {
 
   document.querySelector('.js-order-summary')
     .innerHTML = orderSummaryHTML;
+
+  document.querySelectorAll('.js-delivery-option')
+    .forEach((element)=>{
+      element.addEventListener('click',()=>{
+        const {productId,deliveryOptionId} = element.dataset;
+        updateDeliveryOption(productId,deliveryOptionId);
+        renderOrderSummary();
+      });
+    });
 
   /**
    * 1. Remove the product from the cart

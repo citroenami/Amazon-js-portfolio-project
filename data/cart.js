@@ -1,5 +1,6 @@
 import {findMatchingProduct} from './products.js';
 
+
 // localStorage.getItem('cart') will return null if no cart
 // even if storage stores empty array its gonna be truthy value
 export let cart = JSON.parse(localStorage.getItem('cart')) || [{
@@ -120,11 +121,27 @@ export function removeFromCart(productId) {
   saveToStorage();
 }
 
+function findProductByIdInCart(productId) {
+  let matchingProduct;
+  cart.forEach((cartItem)=>{
+    if(cartItem.productId === productId) {
+      matchingProduct = cartItem;
+    }
+  });
+  return matchingProduct;
+}
+
 export function updateProductQuantity(productId,newQuantity) {
   cart.forEach((cartItem)=>{
     if(cartItem.productId === productId) {
       cartItem.quantity = newQuantity;
     }
   });
+  saveToStorage();
+}
+
+export function updateDeliveryOption(productId,deliveryOptionId) {
+  let product = findProductByIdInCart(productId);
+  product.deliveryOptionId = deliveryOptionId;
   saveToStorage();
 }
