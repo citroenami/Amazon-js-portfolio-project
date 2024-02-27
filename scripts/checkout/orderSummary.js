@@ -155,6 +155,23 @@ export function renderOrderSummary () {
       element.addEventListener('click',()=>{
         const {productId,deliveryOptionId} = element.dataset;
         updateDeliveryOption(productId,deliveryOptionId);
+        /**
+         * 1. update the data
+         * 2. regenerate the HTML
+         * MVC = model - view - controller(is a design pattern)
+         * 1. Model = saves and manages the data
+         * so data folder is all part of model, cause 
+         * it saves and manages our data.
+         * 2. View = takes the data and displays it on the page
+         * the part of the code that takes and generates our data
+         * 3. Controller = runs some code when we interact with the page
+         * e.g: the event listeners
+         * so e.g: cart -> model -> generate HTMl with foreach -> view 
+         * querry selector, event listener -> controller
+         * than view -> regenerates HTML with updated model 
+         * instead of updating the page directly using the DOM
+         * we use MVC approach
+         */
         renderOrderSummary();
       });
     });
