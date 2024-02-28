@@ -2,7 +2,8 @@ import { cart,removeFromCart,updateProductQuantity,updateDeliveryOption } from "
 import {getProduct} from '../../data/products.js';
 import formatCurrency from '../utils/money.js';
 import {renderCheckoutHeader} from './checkoutHeader.js';
-import {deliveryOptions,findDeliveryOption} from '../../data/deliveryOptions.js';
+import {renderPaymentSummary} from './paymentSummary.js';
+import {deliveryOptions,getDeliveryOption} from '../../data/deliveryOptions.js';
 
 // DayJS (ESM version) putting export before external library 
 // function turns it into an ESM version
@@ -21,6 +22,7 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
 export function renderOrderSummary () {
   renderCheckoutHeader();
+  renderPaymentSummary();
   let orderSummaryHTML = '';
   console.log(cart);
 
@@ -30,7 +32,7 @@ export function renderOrderSummary () {
     const matchingProduct = getProduct(productId);
     const deliveryOptionId = cartItem.deliveryOptionId;
 
-    const deliveryOption = findDeliveryOption(deliveryOptionId);
+    const deliveryOption = getDeliveryOption(deliveryOptionId);
 
     const deliveryDateString = calculateDeliveryDate(deliveryOption);
 

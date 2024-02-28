@@ -11,8 +11,8 @@ export const deliveryOptions = [{
   deliveryDays: 1,
   priceCents: 999
 }];
-
-export function findDeliveryOption(deliveryOptionId) {
+// findDeliveryOption -> getDeliveryOption
+export function getDeliveryOption(deliveryOptionId) {
   let delOpt;
   deliveryOptions.forEach((deliveryOption)=>{
     if(deliveryOption.id === deliveryOptionId) {

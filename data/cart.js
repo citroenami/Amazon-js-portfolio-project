@@ -1,6 +1,3 @@
-import {getProduct} from './products.js';
-
-
 // localStorage.getItem('cart') will return null if no cart
 // even if storage stores empty array its gonna be truthy value
 export let cart = JSON.parse(localStorage.getItem('cart')) || [{
