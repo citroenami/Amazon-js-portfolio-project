@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+  </head>
+  <body>
+    <h1>DayJS</h1>
+    <script src="https://unpkg.com/dayjs@1.11.10/dayjs.min.js"></script>
+    <script>
+      const today = dayjs();
+      console.log(today.format('MMMM D'));
+      // get the date 5 days after today and display it in the format
+      // '<Month><Day of Month>'
+      const todayPlus5 = today.add(
+        5,
+        'days'
+      );
+      console.log(todayPlus5.format('MMMM D'));
+      // 1 month after today same format as above
+      const todayPlus1Month = today.add(
+        1,
+        'month'
+      );
+      console.log(todayPlus1Month.format('MMMM D'));
+      // 1 month before today same format
+      const todayMinus1Month = today.subtract(
+        1,
+        'month'
+      );
+      console.log(todayMinus1Month.format('MMMM D'));
+      // any date with format:<Day of week>
+      console.log(todayMinus1Month.format('MMMM dddd'));
+    </script>
+  </body>
+</html>

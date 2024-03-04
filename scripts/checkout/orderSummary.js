@@ -13,18 +13,16 @@ import dayjs from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 // radio selector working same name = we can only select 1 of them
 // <input type='radio' name="name1">
 
-/**
+/** prcatice code
  * const today = dayjs();
    const deliveryDate = today.add(7,'days');
    console.log(deliveryDate.format('dddd, MMMM D')); 
 */
 
-
 export function renderOrderSummary () {
   renderCheckoutHeader();
   renderPaymentSummary();
   let orderSummaryHTML = '';
-  console.log(cart);
 
   cart.forEach((cartItem)=>{
     const productId = cartItem.productId;
@@ -137,13 +135,29 @@ export function renderOrderSummary () {
     });
     return optionsHTML;
   }
-
+  /**
+   * update code so that delivery dates are not on a weekend
+   * steps: 
+   * 1. when calculating delivery date skip all weekend days
+   */
   function calculateDeliveryDate (deliveryOption) {
-    const today = dayjs();
-    const deliveryDate = today.add(
-      deliveryOption.deliveryDays,
-      'days'
-    );
+    let remainingDays = deliveryOption.deliveryDays;
+    // deliveryDate is the original object
+    let deliveryDate = dayjs();
+
+    while(remainingDays !== 0) {
+      // we dont need += because the date changes automatically
+      deliveryDate = deliveryDate.add(
+        1,
+        'days'
+      );
+
+      if(!isWeekend(deliveryDate)) {
+        remainingDays--;
+      }
+    }
+   
+
     const dateString = deliveryDate.format(
       'dddd, MMMM D'
     );
@@ -243,5 +257,19 @@ export function renderOrderSummary () {
     });
   });
 
+  /**
+   * takes a DaysJS obj and returns true if it falls to a 
+   * weekday.
+   */
+
+  //  dayObj->date
+  function isWeekend(date) {
+    const dayOfWeek = date.format('dddd');
+    /**if(argument === 'Saturday'
+    || argument === 'Sunday') {
+      return true;
+    }*/
+    return dayOfWeek === 'Saturday'|| dayOfWeek === 'Sunday';
+  }
   
 }
