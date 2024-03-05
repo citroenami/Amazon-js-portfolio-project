@@ -22,7 +22,7 @@ import {renderAmazonHeader} from './amazonHeader.js';
  * to import is located in the same directory as the file
  * where the import statement is written.
  */
-import {test} from '../test.js';
+//import {test} from '../test_.js';
 
 
 renderAmazonHeader();

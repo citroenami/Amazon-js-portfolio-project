@@ -38,6 +38,13 @@
  * if we look for product by id, than we dont need to choose
    between product.id(productItem) and 
    product.productId(cartItem) 
+   --------------------------
+   Automated testing = using code to test code
+   try to test something different in every test case
+
+   with manual testing if we wanted to remove e.g: rounding
+   in formatCurrency from money.js, we would need to remove
+   it manually -> auto test make re-testing easy after any change
  */
 
 let bol = false;
