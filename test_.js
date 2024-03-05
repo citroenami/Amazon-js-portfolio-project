@@ -45,6 +45,18 @@
    with manual testing if we wanted to remove e.g: rounding
    in formatCurrency from money.js, we would need to remove
    it manually -> auto test make re-testing easy after any change
+   testing framework = external library -> help write tests
+   easier
+   testing framework help do:
+   1.create test suite
+   2. creste tests
+   3. compare value and display result
+   automatically + give us many other features
+   Jasmine doc. url -> https://jasmine.github.io/api/5.1/global 
+   jasmine dl url - > https://github.com/jasmine/jasmine/releases/tag/v5.1.1
+   jasmine-standalone-5.1.1.zip -> extract to dl folder
+   -> drag into our workspace and click on copy folder
+
  */
 
 let bol = false;
