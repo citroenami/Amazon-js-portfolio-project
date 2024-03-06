@@ -56,6 +56,8 @@
    jasmine dl url - > https://github.com/jasmine/jasmine/releases/tag/v5.1.1
    jasmine-standalone-5.1.1.zip -> extract to dl folder
    -> drag into our workspace and click on copy folder
+   spec in Jasmine is just an other name for test 
+   so specRunner = testRunner
 
  */
 
