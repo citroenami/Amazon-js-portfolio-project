@@ -1,14 +1,21 @@
 // localStorage.getItem('cart') will return null if no cart
 // even if storage stores empty array its gonna be truthy value
-export let cart = JSON.parse(localStorage.getItem('cart')) || [{
-    productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
-    quantity: 2,
-    deliveryOptionId: '1'
-  },{
-    productId: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
-    quantity: 1,
-    deliveryOptionId: '2'
-  }];
+export let cart;
+// we run it once, dont worry at import evaluation the whole
+// file is gonna be executed once inluding this function
+loadFromStorage();
+  // this function we created for Jasmine
+  export function loadFromStorage() {
+    cart = JSON.parse(localStorage.getItem('cart')) || [{
+      productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
+      quantity: 2,
+      deliveryOptionId: '1'
+    },{
+      productId: '15b6fc6f-327a-4ec4-896f-486349e85a3d',
+      quantity: 1,
+      deliveryOptionId: '2'
+    }];
+  }
 
 
 

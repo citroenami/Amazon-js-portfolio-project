@@ -58,7 +58,24 @@
    -> drag into our workspace and click on copy folder
    spec in Jasmine is just an other name for test 
    so specRunner = testRunner
-
+   to better organize test code, we try to match the folder
+   structure of the code
+   best practice test each condition of an if-statement
+   maximize test coverage (how much of the code is tested)
+   Mocks = lets us replace a method with a fake version
+   order matters when mocking localStorage
+   - spyOn() records every time a method is used
+-------------------
+!!!Modules!!! A module code is evaluated only the first time
+ when imported -> all the js file is executed oncem even if
+ you only import one value out of it!
+ chatGPT -> Even if you only import a specific function 
+ like addToCart from cart.js into another module 
+ (such as main.js in your example), the entire cart.js module
+  is still processed and executed. This is because there
+  might be dependencies or code within cart.js that need to
+  be initialized or defined for the imported function to
+  work correctly.
  */
 
 let bol = false;

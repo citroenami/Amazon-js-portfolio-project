@@ -7,6 +7,7 @@
    each product the same.
    this is called a data structure
  */
+
 export const products = [
   {
     id: "id2",
