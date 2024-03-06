@@ -63,6 +63,7 @@
    best practice test each condition of an if-statement
    maximize test coverage (how much of the code is tested)
    Mocks = lets us replace a method with a fake version
+   a mock only last for 1 test
    order matters when mocking localStorage
    - spyOn() records every time a method is used
 -------------------
