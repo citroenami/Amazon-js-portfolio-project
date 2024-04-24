@@ -8,5 +8,5 @@ website available at: **https://citroenami.github.io/Amazon-js-portfolio-project
 ## Jasmine unit testing framework implementation into this project  
 Jasmine at: **https://citroenami.github.io/Amazon-js-portfolio-project/jasmine-standalone-5.1.1/SpecRunner.html**  
 ## Other(s):
-other portfolio website: **https://github.com/Gabor12321/youtube-copy-portfolio**
+other portfolio website: **https://github.com/Gabor12321/youtube-copy-portfolio**  
 link2: **https://gabor12321.github.io/kinderbegeleidster-game/kinderbegeleidster_game/main.html**
